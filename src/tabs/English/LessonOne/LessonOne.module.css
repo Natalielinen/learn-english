@@ -1,0 +1,54 @@
+.questionCell,
+.statementCell,
+.negativeCell {
+    display: flex;
+    justify-content: space-evenly;
+    column-gap: 8px;
+}
+
+.pronouns {
+    display: flex;
+    flex-direction: column;
+    row-gap: 4px
+}
+
+.auxiliaryVerb {
+    color: red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.verb {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.verticalCell {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 28px;
+}
+
+.headerCell {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.controlsContainer {
+  margin-bottom: 32px;
+}
+.controls {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    column-gap: 8px;
+  
+}
