@@ -45,7 +45,7 @@ const LessonOne = () => {
                             onChange={handleChange}
                             size="small"
                         >
-                            {commonVerbs.map((verb) => (
+                            {commonVerbs.sort((a, b) => a.label.localeCompare(b.label)).map((verb) => (
                                 <MenuItem key={verb.value} value={verb.value}>
                                     {verb.label}
                                     {showTranslation && ` - ${verb.translation}`}

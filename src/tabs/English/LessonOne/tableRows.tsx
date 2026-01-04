@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import styles from "./LessonOne.module.css";
-import { pronouns } from "../../../constants/englishWords";
+import { commonVerbs, pronouns } from "../../../constants/englishWords";
 
 type CellType = {
     id: number;
@@ -99,7 +99,7 @@ export const getRows = (verb: string): RowType[] => [
             )
         },
         statementCell: {
-            id: 2,
+            id: 5,
             type: "statement",
             content: (
                 <div className={styles.presentStatementCell}>
@@ -123,7 +123,7 @@ export const getRows = (verb: string): RowType[] => [
             )
         },
         negativeCell: {
-            id: 3,
+            id: 6,
             type: "negative",
             content: (
                 <div className={styles.presentNegativetCell}>
@@ -153,5 +153,59 @@ export const getRows = (verb: string): RowType[] => [
                 Настоящее
             </div>
         )
-    }
+    },
+    {
+        questionCell: {
+            id: 7,
+            type: "question",
+            content: (
+                <div className={styles.questionCell}>
+                    <div aria-label="auxiliary verb" className={styles.auxiliaryVerb}>Did</div>
+                    <div className={styles.pronouns}>
+                        {
+                            pronouns.map((pronoun, index) => <span key={index}>{pronoun}</span>)
+                        }
+                    </div>
+                    <div className={styles.verb}><p><span aria-label="verb">{verb}</span>?</p></div>
+
+                </div>
+            )
+        },
+        statementCell: {
+            id: 8,
+            type: "statement",
+            content: (
+                <div className={styles.statementCell}>
+                    <div className={styles.pronouns}>
+                        {
+                            pronouns.map((pronoun, index) => <span key={index}>{pronoun}</span>)
+                        }
+                    </div>
+                    <div className={styles.verb}><p><span aria-label="verb">{commonVerbs.find((cv) => cv.value === verb)?.v2}</span></p></div>
+
+                </div>
+            )
+        },
+        negativeCell: {
+            id: 9,
+            type: "negative",
+            content: (
+                <div className={styles.negativeCell}>
+                    <div className={styles.pronouns}>
+                        {
+                            pronouns.map((pronoun, index) => <span key={index}>{pronoun}</span>)
+                        }
+                    </div>
+                    <div aria-label="auxiliary verb" className={styles.negativeAuxiliaryVerb}>did not (didn't)</div>
+                    <div className={styles.verb}><p><span aria-label="verb">{verb}</span></p></div>
+
+                </div>
+            )
+        },
+        tensesCell: (
+            <div className={styles.verticalCell}>
+                Прошедшее
+            </div>
+        )
+    },
 ];

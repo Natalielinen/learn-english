@@ -64,7 +64,8 @@ export const commonVerbs: CommonVerb[] = [
   { value: "sell", label: "sell", translation: "продавать", v2: "sold", v3: "sold" },
   { value: "teach", label: "teach", translation: "учить", v2: "taught", v3: "taught" },
   { value: "catch", label: "catch", translation: "ловить", v2: "caught", v3: "caught" },
-  { value: "choose", label: "choose", translation: "выбирать", v2: "chose", v3: "chosen" }
+  { value: "choose", label: "choose", translation: "выбирать", v2: "chose", v3: "chosen" },
+  { value: "love", label: "love", translation: "любить", v2: "loved", v3: "loved" }
 ];
 
 export const pronouns = ["I", "you", "we", "they", "he", "she"];
