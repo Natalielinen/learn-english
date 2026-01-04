@@ -2,8 +2,8 @@
 .statementCell,
 .negativeCell {
     display: flex;
-    justify-content: space-evenly;
-    column-gap: 8px;
+    justify-content: flex-start;
+    column-gap: 32px;
 }
 
 .pronouns {
@@ -12,13 +12,19 @@
     row-gap: 4px
 }
 
-.auxiliaryVerb {
+.auxiliaryVerb,
+.negativeAuxiliaryVerb,
+.statementAuxiliaryVerb  {
     color: red;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     font-weight: bold;
+    
+}
+
+.auxiliaryVerb {
+    width: 100px;
 }
 
 .verb {
@@ -51,4 +57,22 @@
     justify-content: flex-start;
     column-gap: 8px;
   
+}
+
+.presentQuestionCell,
+.presentStatementCell,
+.presentNegativetCell {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
+.ending {
+    color: red;
+    font-weight: bold;
+}
+
+
+.presentStatementCell .statementCell {
+    column-gap: 60px;
 }

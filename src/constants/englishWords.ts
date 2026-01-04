@@ -1,4 +1,6 @@
-export const commonVerbs = [
+type CommonVerb = { value: string; label: string; translation: string; v2: string; v3: string };
+
+export const commonVerbs: CommonVerb[] = [
   { value: "say", label: "say", translation: "говорить, сказать", v2: "said", v3: "said" },
   { value: "go", label: "go", translation: "идти, ехать", v2: "went", v3: "gone" },
   { value: "get", label: "get", translation: "получать", v2: "got", v3: "got/gotten" },

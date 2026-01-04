@@ -1,13 +1,22 @@
-import { Button, FormControl, FormHelperText, InputLabel, MenuItem, Select, Table, TableBody, TableCell, TableHead, TableRow } from "@mui/material";
+import {
+    Button,
+    FormControl,
+    FormHelperText,
+    InputLabel,
+    MenuItem,
+    Select,
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableRow,
+} from "@mui/material";
 import styles from "./LessonOne.module.css";
 import { useState } from "react";
-import { commonVerbs, pronouns } from "../../../constants/englishWords";
-
-
-
+import { commonVerbs } from "../../../constants/englishWords";
+import { getRows } from "./tableRows";
 
 const LessonOne = () => {
-
     const [verb, setVerb] = useState(commonVerbs[0].value);
     const [selectedVerb, setSelectedVerb] = useState(commonVerbs[0].value);
     const [showTranslation, setShowTranslation] = useState(false);
@@ -19,7 +28,7 @@ const LessonOne = () => {
 
     const handleShowTranslation = () => {
         setShowTranslation(!showTranslation);
-    }
+    };
 
     return (
         <div>
@@ -35,7 +44,6 @@ const LessonOne = () => {
                             label="Выбрать глагол"
                             onChange={handleChange}
                             size="small"
-
                         >
                             {commonVerbs.map((verb) => (
                                 <MenuItem key={verb.value} value={verb.value}>
@@ -45,76 +53,60 @@ const LessonOne = () => {
                             ))}
                         </Select>
                     </FormControl>
-                    <Button size="small" variant="contained" onClick={handleShowTranslation}>{showTranslation ? "Скрыть перевод" : "Показать перевод"}</Button>
+                    <Button
+                        size="small"
+                        variant="contained"
+                        onClick={handleShowTranslation}
+                    >
+                        {showTranslation ? "Скрыть перевод" : "Показать перевод"}
+                    </Button>
                 </div>
 
-                <FormHelperText sx={{ minHeight: "20px" }}>{
-                    showTranslation && commonVerbs.find((verb) => verb.value === selectedVerb)?.translation
-                }</FormHelperText>
+                <FormHelperText sx={{ minHeight: "20px" }}>
+                    {showTranslation &&
+                        commonVerbs.find((verb) => verb.value === selectedVerb)
+                            ?.translation}
+                </FormHelperText>
             </div>
 
-
-
-            <Table sx={{ minWidth: "650px" }} aria-label="base verbs table" border={1}>
+            <Table
+                sx={{ minWidth: "650px" }}
+                aria-label="base verbs table"
+                border={1}
+            >
                 <TableHead>
                     <TableRow>
-                        <TableCell align="center" className={styles.headerCell}>Вопрос (?)</TableCell>
-                        <TableCell align="center" className={styles.headerCell}>Утверждение (+)</TableCell>
-                        <TableCell align="center" className={styles.headerCell}>Отрицание (-)</TableCell>
+                        <TableCell align="center" className={styles.headerCell}>
+                            Вопрос (?)
+                        </TableCell>
+                        <TableCell align="center" className={styles.headerCell}>
+                            Утверждение (+)
+                        </TableCell>
+                        <TableCell align="center" className={styles.headerCell}>
+                            Отрицание (-)
+                        </TableCell>
                         <TableCell aria-label="tenses column"></TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    <TableRow>
-                        <TableCell sx={{ width: "30%" }} >
-                            <div className={styles.questionCell}>
-                                <div aria-label="auxiliary verb" className={styles.auxiliaryVerb}>Will</div>
-                                <div className={styles.pronouns}>
-                                    {
-                                        pronouns.map((pronoun, index) => <span key={index}>{pronoun}</span>)
-                                    }
-                                </div>
-                                <div className={styles.verb}><p><span aria-label="verb">{verb}</span>?</p></div>
-
-                            </div>
-
-                        </TableCell>
-                        <TableCell sx={{ width: "30%" }}>
-                            <div className={styles.statementCell}>
-                                <div className={styles.pronouns}>
-                                    {
-                                        pronouns.map((pronoun, index) => <span key={index}>{pronoun}</span>)
-                                    }
-                                </div>
-                                <div aria-label="auxiliary verb" className={styles.auxiliaryVerb}>will</div>
-                                <div className={styles.verb}><p><span aria-label="verb">{verb}</span></p></div>
-
-                            </div>
-
-                        </TableCell>
-                        <TableCell sx={{ width: "30%" }}>
-                            <div className={styles.negativeCell}>
-                                <div className={styles.pronouns}>
-                                    {
-                                        pronouns.map((pronoun, index) => <span key={index}>{pronoun}</span>)
-                                    }
-                                </div>
-                                <div aria-label="auxiliary verb" className={styles.auxiliaryVerb}>will not (won't)</div>
-                                <div className={styles.verb}><p><span aria-label="verb">{verb}</span></p></div>
-
-                            </div>
-                        </TableCell>
-                        <TableCell aria-label="tenses column" sx={{ width: "10%" }}>
-                            <div className={styles.verticalCell}>
-                                Будущее
-                            </div>
-                        </TableCell>
-                    </TableRow>
+                    {getRows(verb).map((row, index) => (
+                        <TableRow key={index}>
+                            <TableCell sx={{ width: "30%" }}>
+                                {row.questionCell.content}
+                            </TableCell>
+                            <TableCell sx={{ width: "30%" }}>
+                                {row.statementCell.content}
+                            </TableCell>
+                            <TableCell sx={{ width: "30%" }}>
+                                {row.negativeCell.content}
+                            </TableCell>
+                            <TableCell sx={{ width: "10%" }}>{row.tensesCell}</TableCell>
+                        </TableRow>
+                    ))}
                 </TableBody>
             </Table>
-
         </div>
-    )
-}
+    );
+};
 
 export default LessonOne;
