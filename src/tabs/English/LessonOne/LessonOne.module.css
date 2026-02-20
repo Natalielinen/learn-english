@@ -76,3 +76,7 @@
 .presentStatementCell .statementCell {
     column-gap: 60px;
 }
+
+.userWord {
+    margin-left: 16px;
+}
